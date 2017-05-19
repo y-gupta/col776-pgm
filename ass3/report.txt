@@ -1,0 +1,40 @@
+2013CS10302 - Yash Gupta
+
+1)
+  a) Code.
+    burn in: 5000 samples
+    convergence: sum(delta(expectation))/sum(max_delta) < 0.001
+  b)  (factors: OCR+T+S+PS)
+      Algorithm   Ch-Acc  Wd-Acc  LL      Time (sec)
+      > data-tree.dat
+      gibbs       68.097  16.667  -6.599  4.302
+      LBP         67.560  16.667  -6.606  0.144
+      > data-treeWS.dat
+      gibbs       65.121  15.217  -7.215  9.144
+      LBP         66.556  15.761  -7.213  0.627
+      > data-loops.dat
+      gibbs       56.835  3.5714  -7.536  1.387
+      LBP         56.835  7.1429  -7.546  0.101
+      > data-loopsWS.dat
+      gibbs       67.747  13.846  -6.928  7.362
+      LBP         68.210  16.154  -6.903  0.982
+
+      - gibbs performs at par with LBP in terms of accuracy
+      - time taken for gibbs is considerably higher due to large number of samples needed for convergence.
+
+2) I) Code, Output files
+   II) a) Code
+      b) Code, Output files
+
+3) a)
+  > Network: Bayesian
+  Dataset   Avg-Acc   Avg-LL (test)
+  Andes     0.789     -49.989
+  HeparII   0.802     -15.871
+  Insurance 0.817     -5.8849
+
+  > Network: Markov
+  Dataset   Avg-Acc   Avg-LL (test)
+  Andes     0.803     -45.632
+  HeparII   0.793     -16.317
+  Insurance 0.824     -7.951

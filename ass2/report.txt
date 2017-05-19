@@ -1,0 +1,72 @@
+2013CS10302 - Yash Gupta
+
+1)
+  a) Code
+  b) sum(|delta_(t+1) - delta_t|) < 0.000001, with t_max = 50
+     Does not always converge, but usually in ~15 iterations
+
+2)
+  a)  (factors: OCR+T+S+PS)
+      Algorithm   Ch-Acc  Wd-Acc  LL      Time (sec)
+      > data-tree.dat
+      MP          67.560  16.667  -6.606  0.012
+      LBP         67.560  16.667  -6.606  0.144
+      > data-treeWS.dat
+      MP          66.667  16.304  -7.208  0.083
+      LBP         66.556  15.761  -7.213  0.627
+      > data-loops.dat
+      MP          56.835  7.1429  -7.545  0.018
+      LBP         56.835  7.1429  -7.546  0.101
+      > data-loopsWS.dat
+      MP          67.593  13.846  -6.920  0.072
+      LBP         68.210  16.154  -6.903  0.982
+
+      - MP and LBP perform quite identically, with minor changes in LL and accuracy at more complex models
+      - time taken for LBP is considerably higher due to increased number of edges/nodes and iteration count.
+
+  b)  Algorithm: MP
+      > data-loopyWS.dat
+      Model       Ch-Acc  Wd-Acc  LL      Time (sec)
+      OCR         60.031  8.4615  -7.816  0.003
+      OCR+T       66.049  11.539  -7.525  0.019
+      OCR+T+S     66.203  11.539  -7.332  0.047
+      OCR+T+S+PS  67.593  13.846  -6.920  0.072
+
+      - More complex model results in better accuracies and LL quite consistently
+      - Time increases with complexcity.
+
+
+3) Max-Product/MAP inference
+  a)  (factors: OCR+T+S+PS)
+      Algorithm   Ch-Acc  Wd-Acc  LL      Time (sec)
+      > data-tree.dat
+      MP          69.169  19.048  -6.393  0.015
+      LBP         77.312  52.381  -6.171  0.096
+      > data-treeWS.dat
+      MP          72.737  27.174  -6.797  0.055
+      LBP         74.613  45.652  -6.580  0.356
+      > data-loops.dat
+      MP          55.396  7.1429  -7.218  0.024
+      LBP         55.396  17.857  -7.105  0.061
+      > data-loopsWS.dat
+      MP          72.222  26.923  -6.471  0.064
+      LBP         79.475  57.692  -6.330  0.495
+
+      - MP and LBP perform quite differently with max-product versions
+      - LBP performs better, possibly by being able to find global optimum in multiple iterations.
+      - MP, as it performs only two passes, results in local optimum.
+
+  b)  Algorithm: MP
+      > data-loopyWS.dat
+      Model       Ch-Acc  Wd-Acc  LL      Time (sec)
+      OCR         60.031  8.4615  -7.816  0.003
+      OCR+T       69.599  20.000  -7.422  0.017
+      OCR+T+S     70.833  24.615  -7.020  0.045
+      OCR+T+S+PS  72.222  26.923  -6.471  0.064
+
+      - More complex model results in better accuracies and LL quite consistently
+      - Time increases with complexcity.
+
+  Comparison with marginals:
+  - Wd-Acc greatly increases (as expected), LL also increases slightly.
+  - Time taken reduces as now only max needs to be calculated compared to sum.

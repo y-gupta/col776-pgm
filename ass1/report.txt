@@ -1,0 +1,64 @@
+q1)
+a)
+- Assume 1,2,3..,n to be the topological ordering.
+- For each node 'i', pick 'r' random nodes from 'i+1' to 'n', where 'r' is a random number b/w 0 and 'k'
+- For picking r random nodes from i+1 to n, pick j'th node with probability <num_nodes_still_needed>/<num_nodes_still available>
+- This ensures uniform probability distribution.
+
+b)
+- We run 2 passes of dfs.
+- In the first pass, go upstream from all observed nodes and mark the ancestors with descendentObserved=true
+- In the next pass, run a simplified version of bayes ball, wherein nodes are pushed to a stack in either of 1 direction (upstream/downstream),
+  and each node tracks if it has already been queued for exploration in a given direction.
+- Bayes-ball rules are applied on a case-by-case basis and if the desired ndoe is found along the dfs, the path is computed (via node-discovery links) and output.
+
+
+q2)
+# Small input:
+
+OCR Model:
+Word accuracy: 8.65385% of 104
+Char accuracy: 53.9216% of 510
+Avg. log likelihood: -7.80833
+
+Trans Model:
+Word accuracy: 25.9615% of 104
+Char accuracy: 66.2745% of 510
+Avg. log likelihood: -7.09707
+
+Combined Model:
+Word accuracy: 35.5769% of 104
+Char accuracy: 71.1765% of 510
+Avg. log likelihood: -6.27953
+
+Some Words fixed in trans model: ado, diter, ortet, reader
+
+Some Words fixed in combined model: ensand, noon, seeder, toss
+
+
+# Large Input:
+          char    word    avg. log likelihood
+allimages1
+OCR       58.393  11.197  ­7.876
+Trans     68.046  24.040  ­7.175
+Combined  70.839  31.489  ­6.271
+
+allimages2
+OCR       57.257  10.008  ­7.874
+Trans     67.689  24.177  ­7.174
+Combined  70.720  31.809  ­6.271
+
+allimages3
+OCR       57.258  9.917   ­7.865
+Trans     67.872  24.680  ­7.167
+Combined  70.629  31.946  ­6.265
+
+allimages4
+OCR       57.578  11.471  ­7.869
+Trans     68.248  24.680  ­7.170
+Combined  70.775  31.855  ­6.267
+
+allimages5
+OCR       58.531  11.563  ­7.857
+Trans     68.458  26.691  ­7.158
+Combined  71.068  33.318  ­6.257
